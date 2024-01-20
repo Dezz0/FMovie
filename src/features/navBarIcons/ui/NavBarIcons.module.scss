@@ -1,0 +1,16 @@
+@import "../../../app/styles/mixins";
+
+.NavBarIcons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include md {
+        display: none;
+    }
+
+    svg {
+        cursor: pointer;
+        font-size: 18px;
+        color: var(--white);
+    }
+}
