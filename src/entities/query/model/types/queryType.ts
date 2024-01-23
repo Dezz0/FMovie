@@ -1,7 +1,7 @@
-import { IRequestFilm } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 
 export interface IRequestResponse {
-    results: Array<IRequestFilm>,
+    results: Array<IRequestResults>,
     page: number,
     total_pages: number,
     total_results: number

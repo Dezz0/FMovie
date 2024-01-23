@@ -4,19 +4,28 @@ import { IConfigurationResponse } from '../types/configType';
 
 type initialStateType = {
     url_images: string,
+    genres: Record<number, string>,
     isError: boolean,
     isLoading: boolean
 };
 
 const initialState: initialStateType = {
     url_images: '',
+    genres: {},
     isError: false,
     isLoading: false,
 };
 
 export const fetchConfig = createAsyncThunk('config/fetchConfig', async () => {
     try {
-        return await apiRequest('/configuration');
+        const config = await apiRequest('/configuration');
+        const genreTV = await apiRequest('/genre/tv/list');
+        const genreMovie = await apiRequest('/genre/movie/list');
+        return {
+            config,
+            genreTV,
+            genreMovie,
+        };
     } catch (e) {
         console.log(e);
     }
@@ -31,12 +40,22 @@ const configSlice = createSlice({
             state.isLoading = true;
             state.isError = false;
         });
-        builder.addCase(fetchConfig.fulfilled, (state, action: PayloadAction<IConfigurationResponse>) => {
-            const { images } = action.payload;
+        builder.addCase(fetchConfig.fulfilled, (state, action: PayloadAction<IConfigurationResponse | undefined>) => {
             state.isLoading = false;
-            if (images?.secure_base_url) {
-                state.url_images = images.secure_base_url + 'original';
+            if (action.payload) {
+                const { config, genreTV, genreMovie } = action.payload;
+                if (config?.images) {
+                    state.url_images = config.images.secure_base_url + 'original';
+                }
+                if (genreMovie?.genres && genreTV?.genres) {
+                    const allGenres = [...genreTV.genres, ...genreMovie.genres];
+
+                    allGenres.forEach(g => (
+                        state.genres[g.id] = g.name
+                    ));
+                }
             }
+
         });
         builder.addCase(fetchConfig.rejected, (state) => {
             state.isError = true;

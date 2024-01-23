@@ -1,4 +1,10 @@
 export interface IConfigurationResponse {
+    config: IConfig,
+    genreTV: genresType,
+    genreMovie: genresType,
+}
+
+export interface IConfig {
     change_keys: Array<string>,
     images: {
         backdrop_sizes: Array<string>,
@@ -10,3 +16,8 @@ export interface IConfigurationResponse {
         still_sizes: Array<string>
     }
 }
+
+export type genresType = Record<'genres', Array<{
+    id: number,
+    name: string
+}>>

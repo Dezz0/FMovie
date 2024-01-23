@@ -4,6 +4,7 @@ import { fetchConfig } from '../../../entities/configurationFromApi/model/slice/
 import { fetchUpcoming } from '../../../entities/upcoming/model/slice/upcomingSlice';
 import { SearchContent } from '../../../widgets/searchContent';
 import cls from './MainPage.module.scss';
+import { Trending } from '../../../widgets/trending';
 
 const MainPage: FunctionComponent = () => {
     const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ const MainPage: FunctionComponent = () => {
     return (
         <div className={cls.MainPage}>
             <SearchContent/>
-            <div style={{ height: '1000px' }}></div>
+            <Trending/>
         </div>
     );
 };

@@ -1,12 +1,45 @@
-.ContentWrapper, .ContentWrapperPopUpSearchField {
+@mixin defaultWrapper {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+.ContentWrapper {
+    @include defaultWrapper;
+}
+
 .ContentWrapperPopUpSearchField {
+    @include defaultWrapper;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.ContentWrapperNotFoundPage {
+    @include defaultWrapper;
+    text-align: center;
+    color: var(--black-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.ContentWrapperFooter {
+    @include defaultWrapper;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ContentWrapperTrending {
+    @include defaultWrapper;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ContentWrapperCarousel {
+    @include defaultWrapper;
+    position: relative;
 }

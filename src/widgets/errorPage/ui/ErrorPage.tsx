@@ -8,8 +8,8 @@ const ErrorPage: FunctionComponent = () => {
     };
     return (
         <div className={cls.ErrorPage}>
-            <p>Что-то пошло не так</p>
-            <button onClick={reloadPage}>перезагрузить страницу</button>
+            <p>Error page</p>
+            <button onClick={reloadPage}>Reload page</button>
         </div>
     );
 };

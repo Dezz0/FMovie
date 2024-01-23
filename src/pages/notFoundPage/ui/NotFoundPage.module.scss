@@ -1,0 +1,30 @@
+.NotFoundPage {
+    height: 700px;
+    padding-top: 200px;
+
+    .bigText {
+        font-size: 150px;
+        font-weight: 700;
+    }
+
+    .smallText {
+        font-size: 44px;
+        margin-bottom: 25px;
+    }
+
+    .toHome {
+        width: 200px;
+        padding: 10px 20px;
+        font-size: 17px;
+        align-self: center;
+        border-radius: 15px;
+        background: var(--gradient);
+        color: var(--white);
+        cursor: pointer;
+    }
+
+    .toHome:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+}

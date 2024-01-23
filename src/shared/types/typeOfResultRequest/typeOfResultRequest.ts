@@ -1,8 +1,9 @@
-export interface IRequestFilm {
+export interface IRequestResults {
     adult: boolean,
     backdrop_path: string,
-    genre_ids: Array<string>,
+    genre_ids: Array<number>,
     id: number,
+    media_type: string,
     original_language: string,
     original_title: string,
     overview: string,

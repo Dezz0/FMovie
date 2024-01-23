@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { apiRequest } from '../../../../shared/api/api';
 import { IRequestResponse, queryParamsType } from '../types/queryType';
-import { IRequestFilm } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 
 interface initialStateType extends Omit<IRequestResponse, 'results' | 'query'> {
     requests: Record<string, {
-        results: Array<IRequestFilm>
+        results: Array<IRequestResults>
     }>,
     isError: boolean,
     isLoading: boolean

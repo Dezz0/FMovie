@@ -4,15 +4,13 @@ import './Img.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 interface ImgProps {
-    className?: string;
     src?: string;
 }
 
-const Img: FunctionComponent<ImgProps> = ({ className = '', src }) => {
+const Img: FunctionComponent<ImgProps> = ({ src }) => {
 
     return (
         <LazyLoadImage
-            className={className}
             alt=""
             effect="blur"
             src={src}

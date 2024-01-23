@@ -1,4 +1,4 @@
-import { IRequestFilm } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 
 export interface IUpcomingResponse {
     dates: {
@@ -6,7 +6,7 @@ export interface IUpcomingResponse {
         minimum: string
     },
     page: number,
-    results: Array<IRequestFilm>,
+    results: Array<IRequestResults>,
     total_pages: number,
     total_results: number
 }
