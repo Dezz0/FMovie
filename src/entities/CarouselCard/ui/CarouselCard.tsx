@@ -9,16 +9,17 @@ import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeO
 
 interface CarouselCardProps {
     item: IRequestResults,
-    posterUrl: string
+    posterUrl: string,
+    endpoint?: string
 }
 
-const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl }) => {
+const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, endpoint }) => {
     const navigate = useNavigate();
 
     return (
         <div
             className="CarouselCard"
-            onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+            onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
         >
             <div className="posterBlock">
                 <Img src={posterUrl}/>
@@ -27,7 +28,7 @@ const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl })
             </div>
             <div className="descriptionCard">
                 <span className="title">
-                    {item.title}
+                    {item.title || item.name}
                 </span>
                 <span className="date">
                     {dayjs(item.release_date).format(

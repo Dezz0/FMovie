@@ -31,7 +31,7 @@ const trendingSlice = createSlice({
     name: 'trending',
     initialState,
     reducers: {
-        changeEndpoint(state, action: PayloadAction<string>) {
+        changeEndpointTrending(state, action: PayloadAction<string>) {
             state.endpoint = action.payload;
         },
     },
@@ -55,4 +55,4 @@ const trendingSlice = createSlice({
 });
 
 export default trendingSlice.reducer;
-export const { changeEndpoint } = trendingSlice.actions;
+export const { changeEndpointTrending } = trendingSlice.actions;

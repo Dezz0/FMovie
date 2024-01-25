@@ -10,7 +10,6 @@ const Banner: FunctionComponent = () => {
     const upcoming: Array<IRequestResults> = useAppSelector(state => state.upcoming.results);
 
     useEffect(() => {
-        console.log('banner');
         if (upcoming?.length <= 20) {
             const bg = url + upcoming[Math.floor(Math.random() * 20)]?.backdrop_path;
             setBackground(bg);

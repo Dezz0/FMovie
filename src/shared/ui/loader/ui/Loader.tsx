@@ -4,7 +4,10 @@ import cls from './Loader.module.scss';
 const Loader: FunctionComponent = () => {
 
     return (
-        <div className={cls.Loader}/>
+        <div className={cls.Center}>
+            <div className={cls.Loader}/>
+        </div>
+
     );
 };
 

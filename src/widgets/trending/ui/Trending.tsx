@@ -3,7 +3,7 @@ import cls from './Trending.module.scss';
 import { ContentWrapper } from '../../../shared/ui/contentWrapper';
 import { SwitchTabs } from '../../../shared/ui/switchTabs';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { changeEndpoint, fetchTrending } from '../../../entities/trending/model/slice/trendingSlice';
+import { changeEndpointTrending, fetchTrending } from '../../../entities/trending/model/slice/trendingSlice';
 import { Carousel } from '../../../features/carousel';
 
 const Trending: FunctionComponent = () => {
@@ -11,13 +11,12 @@ const Trending: FunctionComponent = () => {
     const { endpoint, results, isLoading } = useAppSelector(state => state.trending);
 
     useEffect(() => {
-        if (!results[endpoint]) {
+        if (!results[endpoint] && !isLoading) {
             dispatch(fetchTrending(endpoint));
         }
-        console.log(results[endpoint]);
-    }, [endpoint]);
+    }, [endpoint, results]);
     const onTabChange = (tab: string) => {
-        dispatch(changeEndpoint(tab === 'Day' ? 'day' : 'week'));
+        dispatch(changeEndpointTrending(tab === 'Day' ? 'day' : 'week'));
     };
     return (
         <div className={cls.Trending}>

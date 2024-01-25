@@ -1,0 +1,69 @@
+@import "../../../../app/styles/mixins";
+
+.DetailsBanner {
+    width: 100%;
+    background-color: var(--black);
+    padding-top: 100px;
+    margin-bottom: 50px;
+    @include md {
+        margin-bottom: 0;
+        padding-top: 120px;
+        min-height: 700px;
+    }
+
+    .content {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        gap: 25px;
+        @include md {
+            gap: 50px;
+            flex-direction: row;
+        }
+
+        .left {
+            flex-shrink: 0;
+
+            .posterImg {
+                width: 100%;
+                display: block;
+                border-radius: 12px;
+                @include md {
+                    max-width: 350px;
+                }
+            }
+        }
+
+        .right {
+            color: var(--white);
+
+            .title {
+                font-size: 28px;
+                line-height: 40px;
+                @include md {
+                    font-size: 34px;
+                    line-height: 44px;
+                }
+            }
+
+            .genres {
+                margin-bottom: 25px;
+            }
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 25px;
+
+            .rating {
+                max-width: 70px;
+                background-color: var(--black2);
+                @include md {
+                    max-width: 90px;
+                }
+            }
+        }
+    }
+}

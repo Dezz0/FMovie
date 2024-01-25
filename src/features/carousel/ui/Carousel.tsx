@@ -11,11 +11,13 @@ import cls from './Carousel.module.scss';
 interface CarouselProps {
     results: Array<IRequestResults>;
     isLoading: boolean;
+    endpoint?: string;
 }
 
-const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading }) => {
+const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoint }) => {
     const carouselContainer = useRef<HTMLDivElement>(null);
     const url: string = useAppSelector(state => state.config.url_images);
+
     const changeContentCarousel = (dir: string) => {
         const container = carouselContainer.current;
         if (container) {
@@ -34,14 +36,19 @@ const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading }) => {
     return (
         <div className={cls.Carousel}>
             <ContentWrapper className="ContentWrapperCarousel">
-                <Arrows changeContentCarousel={changeContentCarousel}/>
+                {Boolean(results) && <Arrows changeContentCarousel={changeContentCarousel}/>}
                 {!isLoading ?
                     (
                         <div className={cls.carouselItems} ref={carouselContainer}>
                             {
                                 results?.map(item => {
                                     const posterUrl = item.poster_path ? url + item.poster_path : PosterFallback;
-                                    return <CarouselCard key={item.id} item={item} posterUrl={posterUrl}/>;
+                                    return <CarouselCard
+                                        key={item.id}
+                                        item={item}
+                                        posterUrl={posterUrl}
+                                        endpoint={endpoint}
+                                    />;
                                 })
                             }
                         </div>

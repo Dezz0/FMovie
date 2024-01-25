@@ -1,23 +1,18 @@
-import { FunctionComponent, useEffect } from 'react';
-import { useAppDispatch } from '../../../app/providers/storeProviders/utils/hooks';
-import { fetchConfig } from '../../../entities/configurationFromApi/model/slice/configSlice';
-import { fetchUpcoming } from '../../../entities/upcoming/model/slice/upcomingSlice';
-import { SearchContent } from '../../../widgets/searchContent';
+import { FunctionComponent } from 'react';
 import cls from './MainPage.module.scss';
+import { SearchContent } from '../../../widgets/searchContent';
 import { Trending } from '../../../widgets/trending';
+import { Popular } from '../../../widgets/popular';
+import { Rated } from '../../../widgets/rated';
 
 const MainPage: FunctionComponent = () => {
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(fetchConfig());
-        dispatch(fetchUpcoming());
-    }, [dispatch]);
 
     return (
         <div className={cls.MainPage}>
             <SearchContent/>
             <Trending/>
+            <Popular/>
+            <Rated/>
         </div>
     );
 };

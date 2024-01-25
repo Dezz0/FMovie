@@ -1,0 +1,22 @@
+@import "../../../../../../app/styles/mixins";
+
+.title {
+    font-size: 28px;
+    line-height: 40px;
+    @include md {
+        font-size: 34px;
+        line-height: 44px;
+    }
+}
+
+.subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 15px;
+    font-style: italic;
+    opacity: 0.5;
+    @include md {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}

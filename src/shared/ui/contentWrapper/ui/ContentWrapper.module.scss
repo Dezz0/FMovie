@@ -1,3 +1,5 @@
+@import "../../../../app/styles/mixins";
+
 @mixin defaultWrapper {
     width: 100%;
     max-width: 1200px;
@@ -42,4 +44,14 @@
 .ContentWrapperCarousel {
     @include defaultWrapper;
     position: relative;
+}
+
+.ContentWrapperDetailsBanner {
+    @include defaultWrapper;
+    display: flex;
+    gap: 50px;
+    margin-top: 110px;
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+    }
 }
