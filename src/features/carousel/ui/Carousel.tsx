@@ -1,12 +1,12 @@
 import { FunctionComponent, useRef } from 'react';
 import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { ContentWrapper } from '../../../shared/ui/contentWrapper';
-import { SkeletonCard } from '../../../shared/ui/skeletonCard';
 import PosterFallback from '../../../shared/assets/images/no-poster.png';
 import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
 import { CarouselCard } from '../../../entities/CarouselCard';
 import { Arrows } from '../../arrows';
 import cls from './Carousel.module.scss';
+import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import SkeletonCard from '../../../shared/ui/skeletonCard/SkeletonCard';
 
 interface CarouselProps {
     results: Array<IRequestResults>;

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
-import { Img } from '../../../../../../shared/ui/Image';
 import PosterFallback from '../../../../../../shared/assets/images/no-poster.png';
 import { useAppSelector } from '../../../../../../app/providers/storeProviders/utils/hooks';
+import Img from '../../../../../../shared/ui/Image/Img';
 
 interface DetailsBannerProps {
     poster_path: string;

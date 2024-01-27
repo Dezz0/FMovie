@@ -7,6 +7,7 @@ import OverView from './Overview/ui/OverView';
 import InfoRelease from './InfoRelease/ui/InfoRelease';
 import infoDirectors from './InfoDirectors/ui/infoDirectors';
 import InfoWriters from './InfoWriters/ui/InfoWriters';
+import PlayIcon from './playbtn/ui/PlayIcon';
 
 export {
     DetailsBannerSkeleton,
@@ -18,4 +19,5 @@ export {
     InfoRelease,
     infoDirectors,
     InfoWriters,
+    PlayIcon,
 };

@@ -4,10 +4,10 @@ import cls from './DetailsBanner.module.scss';
 import { fetchDetails } from '../../../../entities/contentPage/model/slice/contentPagesSlice';
 import { useAppDispatch, useAppSelector } from '../../../../app/providers/storeProviders/utils/hooks';
 import { IDetailsResponse } from '../../../../entities/contentPage/model/types/contentPageType';
-import { ContentWrapper } from '../../../../shared/ui/contentWrapper';
 import { validGenres } from '../../../../shared/helpers/helpers';
-import { Genres } from '../../../../shared/ui/genres';
-import { CircleRating } from '../../../../shared/ui/circleRating';
+import ContentWrapper from '../../../../shared/ui/contentWrapper/ContentWrapper';
+import Genres from '../../../../shared/ui/genres/Genres';
+import CircleRating from '../../../../shared/ui/circleRating/CircleRating';
 import { ICrewResults, IVideosResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 import { VideoPopup } from '../../../../features/videoPopup';
 import {

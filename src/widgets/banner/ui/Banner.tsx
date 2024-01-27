@@ -1,8 +1,8 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import cls from './Banner.module.scss';
 import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { Img } from '../../../shared/ui/Image';
 import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import Img from '../../../shared/ui/Image/Img';
 
 const Banner: FunctionComponent = () => {
     const [background, setBackground] = useState<string | undefined>('');

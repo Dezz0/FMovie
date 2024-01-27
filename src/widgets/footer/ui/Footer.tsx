@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import cls from './Footer.module.scss';
-import { ContentWrapper } from '../../../shared/ui/contentWrapper';
+import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
 import { FaGithub, FaTelegram, FaVk } from 'react-icons/fa';
 
 const Footer: FunctionComponent = () => {
@@ -17,28 +17,13 @@ const Footer: FunctionComponent = () => {
                     esse cillum dolore eu fugiat nulla pariatur.
                 </div>
                 <div className={cls.socialIcons}>
-                    <a
-                        href="https://t.me/D3zzo"
-                        className={cls.icon}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
+                    <a href="https://t.me/D3zzo" className={cls.icon} target="_blank" rel="noreferrer">
                         <FaTelegram/>
                     </a>
-                    <a
-                        href="https://vk.com/d3zzo69"
-                        className={cls.icon}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
+                    <a href="https://vk.com/d3zzo69" className={cls.icon} target="_blank" rel="noreferrer">
                         <FaVk/>
                     </a>
-                    <a
-                        href="https://github.com/Dezz0"
-                        target="_blank"
-                        className={cls.icon}
-                        rel="noreferrer"
-                    >
+                    <a href="https://github.com/Dezz0" target="_blank" className={cls.icon} rel="noreferrer">
                         <FaGithub/>
                     </a>
                 </div>

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import './WatchTrailer.scss';
-import { PlayIcon } from '../../../../../../shared/ui/playbtn';
+import PlayIcon from '../../playbtn/ui/PlayIcon';
 
 interface WatchTrailerProps {
     openTrailer: () => void;

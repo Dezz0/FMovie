@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import './DetailsBackdropImg.scss';
-import { Img } from '../../../../../../shared/ui/Image';
 import { useAppSelector } from '../../../../../../app/providers/storeProviders/utils/hooks';
+import Img from '../../../../../../shared/ui/Image/Img';
 
 interface DetailsBackdropImgProps {
     backdrop_path: string;

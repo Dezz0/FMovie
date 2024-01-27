@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import { ContentWrapper } from '../../../../../../shared/ui/contentWrapper';
 import './DetailsBannerSkeleton.scss';
+import ContentWrapper from '../../../../../../shared/ui/contentWrapper/ContentWrapper';
 
 const DetailsBannerSkeleton: FunctionComponent = () => {
 

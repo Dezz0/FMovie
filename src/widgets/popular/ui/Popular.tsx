@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect } from 'react';
 import cls from './Popular.module.scss';
-import { ContentWrapper } from '../../../shared/ui/contentWrapper';
-import { SwitchTabs } from '../../../shared/ui/switchTabs';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
 import { Carousel } from '../../../features/carousel';
 import { changeEndpointPopular, fetchPopular } from '../../../entities/popular/model/slice/popularSlice';
+import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import SwitchTabs from '../../../shared/ui/switchTabs/SwitchTabs';
 
 const Popular: FunctionComponent = () => {
     const dispatch = useAppDispatch();
