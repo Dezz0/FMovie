@@ -1,0 +1,44 @@
+@import "../../../../../app/styles/mixins";
+
+.VideosSkeleton {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    @include md {
+        gap: 20px;
+        margin: 0 0 30px;
+        padding: 0;
+    }
+
+    .skItem {
+        width: 150px;
+        flex-shrink: 0;
+        @include md {
+            width: 23.7%;
+        }
+
+        .thumb {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .row {
+            height: 20px;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .row2 {
+            height: 20px;
+            width: 75%;
+            border-radius: 10px;
+        }
+    }
+}

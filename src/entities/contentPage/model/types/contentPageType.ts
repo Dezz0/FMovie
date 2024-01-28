@@ -1,6 +1,7 @@
 import {
     ICastResults,
     ICrewResults,
+    IRequestResults,
     IVideosResults,
 } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 
@@ -68,7 +69,15 @@ export interface IDetailsResponse {
     status: string
     tagline: string
     title: string
+    name: string
     video: boolean
     vote_average: number
     vote_count: number
+}
+
+export interface ISimilarResponse {
+    page: number,
+    results: Array<IRequestResults>,
+    total_pages: number,
+    total_results: number
 }

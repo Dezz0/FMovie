@@ -19,12 +19,12 @@ import {
     OverView,
     Titles,
     WatchTrailer,
-} from '../../../../entities/contentPage/ui/detailsBanner';
-import InfoDirectors from '../../../../entities/contentPage/ui/detailsBanner/InfoDirectors/ui/infoDirectors';
+} from '../../../../entities/contentPage';
+import InfoDirectors from '../../../../entities/contentPage/ui/detailsBanner/InfoDirectors/infoDirectors';
 
 interface DetailsBannerProps {
     trailer?: IVideosResults;
-    crew?: Array<ICrewResults>;
+    crew: Array<ICrewResults>;
 }
 
 const DetailsBanner: FunctionComponent<DetailsBannerProps> = ({ trailer, crew }) => {
@@ -35,10 +35,10 @@ const DetailsBanner: FunctionComponent<DetailsBannerProps> = ({ trailer, crew })
     const [trailerId, setTrailerId] = useState<string>('');
     const director = crew?.filter(pers => pers.job.includes('Director'));
     const writers = crew?.filter(pers => pers.job.includes('Screenplay') || pers.job.includes('Story') || pers.job.includes('Writer'));
-    const { media } = useAppSelector(state => state.content);
+    const { media, isLoadingDetails } = useAppSelector(state => state.content);
 
     useEffect(() => {
-        if (id && mediaType && !media[id]?.details) {
+        if (id && mediaType && !media[id]?.details && !isLoadingDetails) {
             dispatch(fetchDetails({ id, mediaType }));
         }
         if (id && mediaType && media[id]?.details) {
@@ -67,7 +67,7 @@ const DetailsBanner: FunctionComponent<DetailsBannerProps> = ({ trailer, crew })
                             </div>
                             <div className={cls.right}>
                                 <Titles
-                                    title={data.title}
+                                    title={data.title || data.name}
                                     release_date={data.release_date}
                                     tagline={data.tagline}
                                 />

@@ -6,18 +6,19 @@ import { CarouselCard } from '../../../entities/CarouselCard';
 import { Arrows } from '../../arrows';
 import cls from './Carousel.module.scss';
 import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import SkeletonCard from '../../../shared/ui/skeletonCard/SkeletonCard';
+import CarouselSkeleton from '../../../shared/ui/skeletonCard/CarouselSkeleton';
 
 interface CarouselProps {
     results: Array<IRequestResults>;
     isLoading: boolean;
     endpoint?: string;
+    title?: string;
 }
 
-const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoint }) => {
+const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoint, title }) => {
     const carouselContainer = useRef<HTMLDivElement>(null);
     const url: string = useAppSelector(state => state.config.url_images);
-
+  
     const changeContentCarousel = (dir: string) => {
         const container = carouselContainer.current;
         if (container) {
@@ -35,6 +36,11 @@ const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoi
 
     return (
         <div className={cls.Carousel}>
+            {title &&
+                <ContentWrapper className="ContentWrapperCarousel">
+                    <div className={cls.carouselTitle}>{title}</div>
+                </ContentWrapper>
+            }
             <ContentWrapper className="ContentWrapperCarousel">
                 {Boolean(results) && <Arrows changeContentCarousel={changeContentCarousel}/>}
                 {!isLoading ?
@@ -54,13 +60,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoi
                         </div>
                     ) :
                     (
-                        <div className={cls.loadingSkeleton}>
-                            <SkeletonCard/>
-                            <SkeletonCard/>
-                            <SkeletonCard/>
-                            <SkeletonCard/>
-                            <SkeletonCard/>
-                        </div>
+                        <CarouselSkeleton/>
                     )}
             </ContentWrapper>
         </div>

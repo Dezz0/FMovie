@@ -1,9 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { apiRequest } from '../../../../shared/api/api';
-import { ICreditsResponse, IDetailsResponse, IVideosResponse } from '../types/contentPageType';
+import { ICreditsResponse, IDetailsResponse, ISimilarResponse, IVideosResponse } from '../types/contentPageType';
 
-interface VideosParams {
+interface FetchParams {
     mediaType: string,
+    id: string
+}
+
+interface SimilarPayload {
+    data: ISimilarResponse,
     id: string
 }
 
@@ -11,28 +16,33 @@ interface IMedia {
     credits?: ICreditsResponse;
     videos?: IVideosResponse;
     details?: IDetailsResponse;
+    similar?: ISimilarResponse;
 }
 
 type initialStateType = {
     media: Record<number | string, IMedia>
     isLoading: boolean
+    isLoadingSimilar: boolean
+    isLoadingDetails: boolean
     isError: boolean
 }
 
 const initialState: initialStateType = {
     media: {},
     isLoading: false,
+    isLoadingSimilar: false,
+    isLoadingDetails: false,
     isError: false,
 };
 
-export const fetchVideos = createAsyncThunk('content/fetchVideos', async ({ mediaType, id }: VideosParams) => {
+export const fetchVideos = createAsyncThunk('content/fetchVideos', async ({ mediaType, id }: FetchParams) => {
     try {
         return await apiRequest(`/${mediaType}/${id}/videos`);
     } catch (e) {
         console.log(e);
     }
 });
-export const fetchCredits = createAsyncThunk('content/fetchCredits', async ({ mediaType, id }: VideosParams) => {
+export const fetchCredits = createAsyncThunk('content/fetchCredits', async ({ mediaType, id }: FetchParams) => {
     try {
         return await apiRequest(`/${mediaType}/${id}/credits`);
     } catch (e) {
@@ -40,9 +50,18 @@ export const fetchCredits = createAsyncThunk('content/fetchCredits', async ({ me
     }
 });
 
-export const fetchDetails = createAsyncThunk('content/fetchDetails', async ({ mediaType, id }: VideosParams) => {
+export const fetchDetails = createAsyncThunk('content/fetchDetails', async ({ mediaType, id }: FetchParams) => {
     try {
         return await apiRequest(`/${mediaType}/${id}`);
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+export const fetchSimilar = createAsyncThunk('content/fetchSimilar', async ({ mediaType, id }: FetchParams) => {
+    try {
+        const data = await apiRequest(`/${mediaType}/${id}/similar`);
+        return { data, id };
     } catch (e) {
         console.log(e);
     }
@@ -91,10 +110,10 @@ const contentPagesSlice = createSlice({
         });
         builder.addCase(fetchDetails.pending, (state) => {
             state.isError = false;
-            state.isLoading = true;
+            state.isLoadingDetails = true;
         });
         builder.addCase(fetchDetails.fulfilled, (state, action: PayloadAction<IDetailsResponse>) => {
-            state.isLoading = false;
+            state.isLoadingDetails = false;
 
             if (action.payload?.id) {
                 const { id } = action.payload;
@@ -105,7 +124,32 @@ const contentPagesSlice = createSlice({
         });
         builder.addCase(fetchDetails.rejected, (state) => {
             state.isError = true;
-            state.isLoading = false;
+            state.isLoadingDetails = false;
+        });
+        builder.addCase(fetchSimilar.pending, (state) => {
+            state.isLoadingSimilar = true;
+            state.isError = false;
+        });
+        builder.addCase(fetchSimilar.fulfilled, (state, action: PayloadAction<SimilarPayload | undefined>) => {
+            state.isLoadingSimilar = false;
+            if (action.payload) {
+                const { id, data } = action.payload;
+                if (!state.media[id]?.similar) {
+                    state.media[id] = {
+                        ...state.media[id], similar: {
+                            results: data.results,
+                            page: data.page,
+                            total_pages: data.total_pages,
+                            total_results: data.total_results,
+                        },
+                    };
+                }
+            }
+
+        });
+        builder.addCase(fetchSimilar.rejected, (state) => {
+            state.isLoadingSimilar = false;
+            state.isError = true;
         });
     },
 });

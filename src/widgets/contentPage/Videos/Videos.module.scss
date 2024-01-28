@@ -1,25 +1,24 @@
 @import "../../../app/styles/mixins";
 
-.Carousel {
+.Videos {
+    position: relative;
     margin-bottom: 50px;
 
-    .carouselTitle {
+    .title {
         font-size: 24px;
         color: var(--white);
-        margin-bottom: 20px;
-        font-weight: normal;
+        margin-bottom: 25px;
     }
 
-    .carouselItems {
+    .videosRow {
         display: flex;
         gap: 10px;
-        overflow-y: hidden;
+        overflow-x: auto;
         margin-right: -20px;
         margin-left: -20px;
         padding: 0 20px;
         @include md {
             gap: 20px;
-            overflow: hidden;
             margin: 0;
             padding: 0;
         }

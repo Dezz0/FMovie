@@ -1,19 +1,22 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { DetailsBanner } from '../../../widgets/contentPage/detailsBanner';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
 import { fetchCredits, fetchVideos } from '../../../entities/contentPage/model/slice/contentPagesSlice';
-import { ICrewResults, IVideosResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import {
+    ICastResults,
+    ICrewResults,
+    IVideosResults,
+} from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { Similar, Videos } from '../../../widgets/contentPage';
+import { DetailsBanner } from '../../../widgets/contentPage/detailsBanner';
+import { Cast } from '../../../widgets/contentPage/Cast';
 
-interface ContentPageProps {
-
-}
-
-const ContentPage: FunctionComponent<ContentPageProps> = () => {
-    const [crew, setCrew] = useState<Array<ICrewResults>>();
-    const [trailer, setTrailer] = useState<IVideosResults>();
+const ContentPage: FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const { id, mediaType } = useParams();
+    const [crew, setCrew] = useState<Array<ICrewResults>>([]);
+    const [cast, setCast] = useState<Array<ICastResults>>([]);
+    const [videos, setVideos] = useState<Array<IVideosResults>>([]);
     const { media } = useAppSelector(state => state.content);
 
     useEffect(() => {
@@ -24,18 +27,17 @@ const ContentPage: FunctionComponent<ContentPageProps> = () => {
     }, [dispatch, id, media, mediaType]);
 
     useEffect(() => {
-        if (!crew && !trailer) {
-            if (media[id!]?.credits) setCrew(media[id!].credits!.crew);
-            if (media[id!]?.videos) setTrailer(media[id!].videos?.results[0]);
-        }
-    }, [media]);
+        if (id && media[id]?.videos) setVideos(media[id].videos!.results);
+        if (id && media[id]?.credits?.cast) setCast(media[id].credits!.cast);
+        if (id && media[id]?.credits?.crew) setCrew(media[id].credits!.crew);
+    }, [cast, crew, id, media, videos]);
 
     return (
         <div>
-            <DetailsBanner
-                trailer={trailer}
-                crew={crew}
-            />
+            <DetailsBanner trailer={videos?.[0]} crew={crew}/>
+            <Cast cast={cast}/>
+            <Videos videos={videos}/>
+            <Similar/>
         </div>
     );
 };

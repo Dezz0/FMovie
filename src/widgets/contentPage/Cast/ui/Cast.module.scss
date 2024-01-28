@@ -1,25 +1,23 @@
-@import "../../../app/styles/mixins";
+@import "../../../../app/styles/mixins";
 
-.Carousel {
+.Cast {
+    position: relative;
     margin-bottom: 50px;
 
-    .carouselTitle {
+    .title {
         font-size: 24px;
         color: var(--white);
-        margin-bottom: 20px;
-        font-weight: normal;
+        margin-bottom: 25px;
     }
 
-    .carouselItems {
+    .listItems {
         display: flex;
-        gap: 10px;
+        gap: 20px;
         overflow-y: hidden;
         margin-right: -20px;
         margin-left: -20px;
         padding: 0 20px;
         @include md {
-            gap: 20px;
-            overflow: hidden;
             margin: 0;
             padding: 0;
         }

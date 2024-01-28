@@ -3,7 +3,7 @@ export interface IRequestResults {
     backdrop_path: string,
     genre_ids: Array<number>,
     id: number,
-    media_type: string,
+    media_type?: string,
     original_language: string,
     original_title: string,
     overview: string,
@@ -58,3 +58,4 @@ export interface ICrewResults {
     popularity: number,
     profile_path: string
 }
+
