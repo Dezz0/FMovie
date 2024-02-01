@@ -2,7 +2,6 @@ import { FunctionComponent } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './Img.scss';
-import PosterFallback from '../../assets/images/no-poster.png';
 
 interface ImgProps {
     src?: string;
@@ -17,7 +16,6 @@ const Img: FunctionComponent<ImgProps> = ({ src, className = '' }) => {
             alt=""
             effect="blur"
             src={src}
-            placeholderSrc={PosterFallback}
         />
     );
 };

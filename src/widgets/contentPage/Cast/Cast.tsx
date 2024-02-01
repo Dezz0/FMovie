@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
 import cls from './Cast.module.scss';
-import { ICastResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import ContentWrapper from '../../../../shared/ui/contentWrapper/ContentWrapper';
-import { CartSkeleton, CastCard } from '../../../../entities/contentPage';
+import { ICastResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import { CartSkeleton, CastCard } from '../../../entities/contentPage';
 
 interface CastProps {
     cast?: Array<ICastResults>;

@@ -13,8 +13,8 @@ export enum AppRoutes {
 
 export const RouterPath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
-    [AppRoutes.RESULTS_QUERY]: '/search/:query',
-    [AppRoutes.CONTENT_PAGE]: '/:mediaType/:id',
+    [AppRoutes.RESULTS_QUERY]: 'search/:query',
+    [AppRoutes.CONTENT_PAGE]: ':mediaType/:id',
     [AppRoutes.NOT_FOUND]: '*',
 };
 
@@ -23,7 +23,7 @@ export const RouteConfig: Record<string, RouteProps> = {
         path: RouterPath.main,
         element: <MainPage/>,
     },
-    [AppRoutes.RESULTS_QUERY]: {
+    [AppRoutes.CONTENT_PAGE]: {
         path: RouterPath.results_query,
         element: <ResultsQuery/>,
     },

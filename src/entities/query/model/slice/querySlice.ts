@@ -1,30 +1,23 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { apiRequest } from '../../../../shared/api/api';
 import { IRequestResponse, queryParamsType } from '../types/queryType';
-import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
 
-interface initialStateType extends Omit<IRequestResponse, 'results' | 'query'> {
-    requests: Record<string, {
-        results: Array<IRequestResults>
-    }>,
+interface initialStateType {
+    requests: Record<string, IRequestResponse>,
     isError: boolean,
     isLoading: boolean
 }
 
 const initialState: initialStateType = {
     requests: {},
-    page: 0,
-    total_pages: 0,
-    total_results: 0,
     isError: false,
     isLoading: false,
 };
 
-export const fetchContent = createAsyncThunk('query/fetchContent', async ({ query, page = 1 }: queryParamsType) => {
+export const fetchQueryResults = createAsyncThunk('query/fetchQueryResults', async ({ query, page }: queryParamsType) => {
     try {
         const data = await apiRequest(`/search/multi?query=${query}&page=${page}`);
         data.query = query;
-        console.log(data);
         return data;
     } catch (e) {
         console.log(e);
@@ -36,23 +29,25 @@ const querySlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchContent.pending, (state) => {
+        builder.addCase(fetchQueryResults.pending, (state) => {
             state.isLoading = true;
             state.isError = false;
         });
-        builder.addCase(fetchContent.fulfilled, (state, action: PayloadAction<IRequestResponse>) => {
-            const { query, results, total_results, total_pages, page } = action.payload;
+        builder.addCase(fetchQueryResults.fulfilled, (state, action: PayloadAction<IRequestResponse>) => {
             state.isLoading = false;
-            state.page = page;
-            state.total_pages = total_pages;
-            state.total_results = total_results;
-            if (!state.requests[query] && results) {
-                state.requests[query] = { results: [...results] };
-            }
+            if (action.payload) {
+                const { query, page, results, total_results } = action.payload;
 
+                if (!state.requests.query && page === 1) {
+                    state.requests[query!] = { page: page, query: query, total_results: total_results, results: [...results] };
+                }
+                if (state.requests[query!]?.page < page) {
+                    state.requests[query!] = { ...state.requests[query!], page: page, results: [...state.requests[query!].results, ...results] };
+                }
+            }
         });
 
-        builder.addCase(fetchContent.rejected, (state) => {
+        builder.addCase(fetchQueryResults.rejected, (state) => {
             state.isLoading = false;
             state.isError = true;
         });
@@ -60,4 +55,6 @@ const querySlice = createSlice({
 });
 
 export default querySlice.reducer;
+
+
 

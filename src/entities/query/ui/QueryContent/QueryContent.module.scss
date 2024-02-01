@@ -1,0 +1,19 @@
+@import "../../../../app/styles/mixins";
+
+.contentCard {
+    width: calc(50% - 5px);
+    margin-bottom: 25px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s;
+    @include md {
+        width: calc(25% - 15px);
+    }
+    @include lg {
+        width: calc(20% - 16px);
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

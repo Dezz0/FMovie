@@ -10,21 +10,25 @@ import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeO
 interface CarouselCardProps {
     item: IRequestResults,
     posterUrl: string,
-    endpoint?: string
+    endpoint?: string,
+    fullInfo?: boolean
+    className?: string
 }
 
-const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, endpoint }) => {
+const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, endpoint, fullInfo = true, className = '' }) => {
     const navigate = useNavigate();
 
     return (
         <div
-            className="CarouselCard"
+            className={`CarouselCard ${className}`}
             onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
         >
             <div className="posterBlock">
                 <Img src={posterUrl}/>
-                <CircleRating rating={Number(item.vote_average.toFixed(1))}/>
-                <Genres genresProps={item.genre_ids.slice(0, 2)}/>
+                {fullInfo && (<>
+                    <CircleRating rating={Number(item.vote_average.toFixed(1))}/>
+                    <Genres genresProps={item.genre_ids.slice(0, 2)}/>
+                </>)}
             </div>
             <div className="descriptionCard">
                 <span className="title">

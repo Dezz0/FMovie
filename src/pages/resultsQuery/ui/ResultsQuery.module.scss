@@ -1,0 +1,16 @@
+@import "../../../app/styles/mixins";
+
+.ResultsQuery {
+    min-height: 700px;
+    padding-top: 100px;
+
+    .resultsContainer {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        margin-bottom: 50px;
+        @include md {
+            gap: 20px;
+        }
+    }
+}

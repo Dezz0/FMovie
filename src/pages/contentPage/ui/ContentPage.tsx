@@ -7,9 +7,7 @@ import {
     ICrewResults,
     IVideosResults,
 } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { Similar, Videos } from '../../../widgets/contentPage';
-import { DetailsBanner } from '../../../widgets/contentPage/detailsBanner';
-import { Cast } from '../../../widgets/contentPage/Cast';
+import { Cast, DetailsBanner, Similar, Videos } from '../../../widgets/contentPage';
 
 const ContentPage: FunctionComponent = () => {
     const dispatch = useAppDispatch();
