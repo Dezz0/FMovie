@@ -2,9 +2,16 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { apiRequest } from '../../../../shared/api/api';
 import { IConfigurationResponse } from '../types/configType';
 
+type ExploreGenresType = Array<{
+    id: number,
+    name: string
+}>
+
 type initialStateType = {
     url_images: string,
     genres: Record<number, string>,
+    genresTV: ExploreGenresType
+    genresMovie: ExploreGenresType
     isError: boolean,
     isLoading: boolean
 };
@@ -12,6 +19,8 @@ type initialStateType = {
 const initialState: initialStateType = {
     url_images: '',
     genres: {},
+    genresTV: [],
+    genresMovie: [],
     isError: false,
     isLoading: false,
 };
@@ -49,6 +58,8 @@ const configSlice = createSlice({
                 }
                 if (genreMovie?.genres && genreTV?.genres) {
                     const allGenres = [...genreTV.genres, ...genreMovie.genres];
+                    state.genresTV = genreTV.genres;
+                    state.genresMovie = genreMovie.genres;
 
                     allGenres.forEach(g => (
                         state.genres[g.id] = g.name

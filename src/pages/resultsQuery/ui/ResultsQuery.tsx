@@ -6,11 +6,12 @@ import { fetchQueryResults } from '../../../entities/query/model/slice/querySlic
 import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
 import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
 import { NotFoundResults, QueryContent, TotalResults } from '../../../entities/query';
+import Loader from '../../../shared/ui/loader/Loader';
 
 const ResultsQuery: FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const { query } = useParams();
-    const { requests } = useAppSelector(state => state.query);
+    const { requests, isLoading } = useAppSelector(state => state.query);
     const currentPage = useRef(requests[query!]?.page || 1);
 
     const fetchFilms = () => {
@@ -29,6 +30,10 @@ const ResultsQuery: FunctionComponent = () => {
         let page = currentPage.current;
         dispatch(fetchQueryResults({ query, page }));
     }, [query]);
+
+    if (!requests[query!] && isLoading) {
+        return <Loader/>;
+    }
 
     return (
         <div className={cls.ResultsQuery}>
