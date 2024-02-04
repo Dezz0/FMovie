@@ -1,4 +1,4 @@
-import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 export interface IRequestResponse {
     results: Array<IRequestResults>,

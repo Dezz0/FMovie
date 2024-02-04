@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import './Genres.scss';
-import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 
 interface GenresProps {
     genresProps: number[];

@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
 import cls from './SearchContent.module.scss';
 import { Banner } from '../../banner';
-import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { SearchQuery } from '../../../features/searchQuery';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { SearchQuery } from 'features/searchQuery';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
 
 const SearchContent: FunctionComponent = () => {
     const isLoading: boolean = useAppSelector(state => state.upcoming.isLoading);

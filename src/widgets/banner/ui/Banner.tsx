@@ -1,8 +1,8 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import cls from './Banner.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import Img from '../../../shared/ui/Image/Img';
-import { fetchUpcoming } from '../../../entities/upcoming/model/slice/upcomingSlice';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import Img from 'shared/ui/Image/Img';
+import { fetchUpcoming } from 'entities/upcoming/model/slice/upcomingSlice';
 
 const Banner: FunctionComponent = () => {
     const dispatch = useAppDispatch();

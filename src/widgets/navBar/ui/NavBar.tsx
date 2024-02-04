@@ -1,11 +1,11 @@
 import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import cls from './NavBar.module.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../../shared/assets/icons/logo.svg';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import { NavBarLinks } from '../../../features/navBarLinks';
-import { NavBarIcons } from '../../../features/navBarIcons';
-import { PopUpSearchQuery } from '../../../features/popUpSearchQuery';
+import { ReactComponent as Logo } from 'shared/assets/icons/logo.svg';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import { NavBarLinks } from 'features/navBarLinks';
+import { NavBarIcons } from 'features/navBarIcons';
+import { PopUpSearchQuery } from 'features/popUpSearchQuery';
 
 interface NavBarProps {
 

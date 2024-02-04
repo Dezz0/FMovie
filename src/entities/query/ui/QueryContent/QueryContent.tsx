@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
-import PosterFallback from '../../../../shared/assets/images/no-poster.png';
+import PosterFallback from 'shared/assets/images/no-poster.png';
 import { CarouselCard } from '../../../CarouselCard';
-import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { useAppSelector } from '../../../../app/providers/storeProviders/utils/hooks';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 import cls from './QueryContent.module.scss';
 
 interface QueryResultsProps {

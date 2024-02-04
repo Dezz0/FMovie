@@ -1,8 +1,8 @@
 import { Dispatch, FunctionComponent, SetStateAction } from 'react';
 import './VideoCard.scss';
-import Img from '../../../../../shared/ui/Image/Img';
-import PlayIcon from '../../../../../shared/ui/playIcon/PlayIcon';
-import { IVideosResults } from '../../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import Img from 'shared/ui/Image/Img';
+import PlayIcon from 'shared/ui/playIcon/PlayIcon';
+import { IVideosResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 interface VideoCardProps {
     video: IVideosResults;

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import cls from './Footer.module.scss';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
 import { FaGithub, FaTelegram, FaVk } from 'react-icons/fa';
 
 const Footer: FunctionComponent = () => {

@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect } from 'react';
 import cls from './Rated.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { Carousel } from '../../../features/carousel';
-import { changeEndpointRated, fetchRated } from '../../../entities/rated/model/slice/ratedSlice';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import SwitchTabs from '../../../shared/ui/switchTabs/SwitchTabs';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { Carousel } from 'features/carousel';
+import { changeEndpointRated, fetchRated } from 'entities/rated/model/slice/ratedSlice';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import SwitchTabs from 'shared/ui/switchTabs/SwitchTabs';
 
 const Rated: FunctionComponent = () => {
     const dispatch = useAppDispatch();

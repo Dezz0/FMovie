@@ -1,11 +1,11 @@
 import { FunctionComponent, useState } from 'react';
 import cls from './Videos.module.scss';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import { IVideosResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import VideosSkeleton from '../../../entities/contentPage/ui/videos/VideosSkeleton/VideosSkeleton';
-import { VideoPopup } from '../../../features/videoPopup';
-import { VideoCard } from '../../../entities/contentPage';
-import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import { IVideosResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import VideosSkeleton from 'entities/contentPage/ui/videos/VideosSkeleton/VideosSkeleton';
+import { VideoPopup } from 'features/videoPopup';
+import { VideoCard } from 'entities/contentPage';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 
 interface VideosProps {
     videos?: Array<IVideosResults>;

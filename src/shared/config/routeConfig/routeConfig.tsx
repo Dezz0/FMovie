@@ -1,9 +1,9 @@
 import { RouteProps } from 'react-router-dom';
-import { NotFoundPage } from '../../../pages/notFoundPage';
-import { MainPage } from '../../../pages/mainPage';
-import { ResultsQuery } from '../../../pages/resultsQuery';
-import { ContentPage } from '../../../pages/contentPage';
-import { Explore } from '../../../pages/explore';
+import { NotFoundPage } from 'pages/notFoundPage';
+import { MainPage } from 'pages/mainPage';
+import { ResultsQuery } from 'pages/resultsQuery';
+import { ContentPage } from 'pages/contentPage';
+import { Explore } from 'pages/explore';
 
 export enum AppRoutes {
     MAIN = 'main',

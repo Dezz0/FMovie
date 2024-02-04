@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { apiRequest } from '../../../../shared/api/api';
+import { apiRequest } from 'shared/api/api';
 import { exploreParamsType, ExplorePayloadResponse, IGenres, IMoviesAndTV, ISorting } from '../types/exploreType';
 
 type InitialStateType = {

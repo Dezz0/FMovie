@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import cls from './DetailsBannerSkeleton.module.scss';
-import ContentWrapper from '../../../../../shared/ui/contentWrapper/ContentWrapper';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
 
 const DetailsBannerSkeleton: FunctionComponent = () => {
 

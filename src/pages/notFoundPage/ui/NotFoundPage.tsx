@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import cls from './NotFoundPage.module.scss';
 import { useNavigate } from 'react-router-dom';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
 
 const NotFoundPage: FunctionComponent = () => {
     const navigate = useNavigate();

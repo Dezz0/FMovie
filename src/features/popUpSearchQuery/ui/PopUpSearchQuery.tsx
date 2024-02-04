@@ -2,8 +2,8 @@ import { Dispatch, FunctionComponent, SetStateAction, useState } from 'react';
 import cls from './PopUpSearchQuery.module.scss';
 import { VscChromeClose } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import Input from '../../../shared/ui/input/Input';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import Input from 'shared/ui/input/Input';
 
 interface PopUpSearchQueryProps {
     setShowSearchField: Dispatch<SetStateAction<boolean>>;

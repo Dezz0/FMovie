@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { apiRequest } from '../../../../shared/api/api';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import { apiRequest } from 'shared/api/api';
 import { IPopularResponse } from '../types/popularType';
 
 type initialStateType = {

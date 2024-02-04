@@ -3,7 +3,7 @@ import {
     ICrewResults,
     IRequestResults,
     IVideosResults,
-} from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+} from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 export interface IVideosResponse {
     id: number,

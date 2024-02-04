@@ -1,12 +1,12 @@
 import { FunctionComponent, useRef } from 'react';
-import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import PosterFallback from '../../../shared/assets/images/no-poster.png';
-import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { CarouselCard } from '../../../entities/CarouselCard';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import PosterFallback from 'shared/assets/images/no-poster.png';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { CarouselCard } from 'entities/CarouselCard';
 import { Arrows } from '../../arrows';
 import cls from './Carousel.module.scss';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import CarouselSkeleton from '../../../shared/ui/skeletonCard/CarouselSkeleton';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import CarouselSkeleton from 'shared/ui/skeletonCard/CarouselSkeleton';
 
 interface CarouselProps {
     results: Array<IRequestResults>;
@@ -18,7 +18,7 @@ interface CarouselProps {
 const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoint, title }) => {
     const carouselContainer = useRef<HTMLDivElement>(null);
     const url: string = useAppSelector(state => state.config.url_images);
-  
+
     const changeContentCarousel = (dir: string) => {
         const container = carouselContainer.current;
         if (container) {

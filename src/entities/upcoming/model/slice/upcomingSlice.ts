@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { apiRequest } from '../../../../shared/api/api';
+import { apiRequest } from 'shared/api/api';
 import { IUpcomingResponse } from '../types/upcomingType';
-import { IRequestResults } from '../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 type initialStateType = {
     page: number,

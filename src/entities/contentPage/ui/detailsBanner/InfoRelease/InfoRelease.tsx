@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import dayjs from 'dayjs';
-import { toHoursAndMinutes } from '../../../../../shared/helpers/helpers';
+import { toHoursAndMinutes } from 'shared/helpers/helpers';
 import '../infoContent.scss';
 
 interface InfoReleaseProps {

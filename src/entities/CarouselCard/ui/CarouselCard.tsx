@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import './CarouselCard.scss';
-import Img from '../../../shared/ui/Image/Img';
-import CircleRating from '../../../shared/ui/circleRating/CircleRating';
-import Genres from '../../../shared/ui/genres/Genres';
+import Img from 'shared/ui/Image/Img';
+import CircleRating from 'shared/ui/circleRating/CircleRating';
+import Genres from 'shared/ui/genres/Genres';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
-import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 interface CarouselCardProps {
     item: IRequestResults,

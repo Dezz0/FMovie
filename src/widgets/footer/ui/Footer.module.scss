@@ -1,9 +1,9 @@
-@import "../../../app/styles/mixins";
+@import "app/styles/mixins";
 
 .Footer {
     background-color: var(--black3);
     padding: 50px 0;
-    color: white;
+    color: var(--white);
     position: relative;
 
     .infoText {

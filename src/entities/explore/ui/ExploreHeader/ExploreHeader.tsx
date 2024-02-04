@@ -1,6 +1,6 @@
 import { Dispatch, FunctionComponent, MutableRefObject, SetStateAction } from 'react';
 import cls from './ExploreHeader.module.scss';
-import { SelectGroup } from '../../../../features/explore';
+import { SelectGroup } from 'features/explore';
 
 interface ExploreHeaderProps {
     mediaType: 'tv' | 'movie';

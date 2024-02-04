@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import cls from './SearchQuery.module.scss';
 import { useNavigate } from 'react-router-dom';
-import Input from '../../../shared/ui/input/Input';
-import Button from '../../../shared/ui/button/Button';
+import Input from 'shared/ui/input/Input';
+import Button from 'shared/ui/button/Button';
 
 interface SearchQueryProps {
     className?: string;

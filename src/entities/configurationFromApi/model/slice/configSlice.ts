@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { apiRequest } from '../../../../shared/api/api';
+import { apiRequest } from 'shared/api/api';
 import { IConfigurationResponse } from '../types/configType';
 
 type ExploreGenresType = Array<{

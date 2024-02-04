@@ -1,14 +1,13 @@
 import { FunctionComponent } from 'react';
-import cls from './MainPage.module.scss';
-import { SearchContent } from '../../../widgets/searchContent';
-import { Trending } from '../../../widgets/trending';
-import { Popular } from '../../../widgets/popular';
-import { Rated } from '../../../widgets/rated';
+import { SearchContent } from 'widgets/searchContent';
+import { Trending } from 'widgets/trending';
+import { Popular } from 'widgets/popular';
+import { Rated } from 'widgets/rated';
 
 const MainPage: FunctionComponent = () => {
 
     return (
-        <div className={cls.MainPage}>
+        <div>
             <SearchContent/>
             <Trending/>
             <Popular/>

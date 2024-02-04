@@ -1,9 +1,9 @@
 import { FunctionComponent, useEffect } from 'react';
 import { AppRouter } from './providers/Router';
-import { NavBar } from '../widgets/navBar';
-import { Footer } from '../widgets/footer';
+import { NavBar } from 'widgets/navBar';
+import { Footer } from 'widgets/footer';
 import { useAppDispatch, useAppSelector } from './providers/storeProviders/utils/hooks';
-import { fetchConfig } from '../entities/configurationFromApi/model/slice/configSlice';
+import { fetchConfig } from 'entities/configurationFromApi/model/slice/configSlice';
 
 const App: FunctionComponent = () => {
     const dispatch = useAppDispatch();

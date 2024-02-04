@@ -1,9 +1,9 @@
 import { FunctionComponent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 import { useParams } from 'react-router-dom';
-import { fetchSimilar } from '../../../entities/contentPage/model/slice/contentPagesSlice';
-import { IRequestResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { Carousel } from '../../../features/carousel';
+import { fetchSimilar } from 'entities/contentPage/model/slice/contentPagesSlice';
+import { IRequestResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import { Carousel } from 'features/carousel';
 
 const Similar: FunctionComponent = () => {
     const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ const Similar: FunctionComponent = () => {
             setSimilar(media[id].similar!.results);
         }
     }, [media]);
-  
+
     return (
         <>{!!similar &&
             <Carousel results={similar} isLoading={isLoadingSimilar} title={title} endpoint={mediaType}/>

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { ICrewResults } from '../../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
+import { ICrewResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
 
 interface infoDirectorsProps {
     director: Array<ICrewResults>;

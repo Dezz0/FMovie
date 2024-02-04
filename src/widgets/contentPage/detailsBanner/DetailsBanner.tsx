@@ -1,15 +1,15 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import cls from './DetailsBanner.module.scss';
-import { fetchDetails } from '../../../entities/contentPage/model/slice/contentPagesSlice';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { IDetailsResponse } from '../../../entities/contentPage/model/types/contentPageType';
-import { validGenres } from '../../../shared/helpers/helpers';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import Genres from '../../../shared/ui/genres/Genres';
-import CircleRating from '../../../shared/ui/circleRating/CircleRating';
-import { ICrewResults, IVideosResults } from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { VideoPopup } from '../../../features/videoPopup';
+import { fetchDetails } from 'entities/contentPage/model/slice/contentPagesSlice';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { IDetailsResponse } from 'entities/contentPage/model/types/contentPageType';
+import { validGenres } from 'shared/helpers/helpers';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import Genres from 'shared/ui/genres/Genres';
+import CircleRating from 'shared/ui/circleRating/CircleRating';
+import { ICrewResults, IVideosResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import { VideoPopup } from 'features/videoPopup';
 import {
     DetailsBackdropImg,
     DetailsBannerSkeleton,
@@ -19,8 +19,8 @@ import {
     OverView,
     Titles,
     WatchTrailer,
-} from '../../../entities/contentPage';
-import InfoDirectors from '../../../entities/contentPage/ui/detailsBanner/InfoDirectors/infoDirectors';
+} from 'entities/contentPage';
+import InfoDirectors from 'entities/contentPage/ui/detailsBanner/InfoDirectors/infoDirectors';
 
 interface DetailsBannerProps {
     trailer?: IVideosResults;

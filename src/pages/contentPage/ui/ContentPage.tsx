@@ -1,13 +1,13 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { fetchCredits, fetchVideos } from '../../../entities/contentPage/model/slice/contentPagesSlice';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { fetchCredits, fetchVideos } from 'entities/contentPage/model/slice/contentPagesSlice';
 import {
     ICastResults,
     ICrewResults,
     IVideosResults,
-} from '../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import { Cast, DetailsBanner, Similar, Videos } from '../../../widgets/contentPage';
+} from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import { Cast, DetailsBanner, Similar, Videos } from 'widgets/contentPage';
 
 const ContentPage: FunctionComponent = () => {
     const dispatch = useAppDispatch();

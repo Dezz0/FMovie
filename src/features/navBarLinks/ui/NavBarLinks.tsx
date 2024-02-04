@@ -1,8 +1,7 @@
 import { Dispatch, FunctionComponent, SetStateAction } from 'react';
 import cls from './NavBarLinks.module.scss';
-
 import { HiOutlineSearch } from 'react-icons/hi';
-import AppLink from '../../../shared/ui/appLink/AppLink';
+import AppLink from 'shared/ui/appLink/AppLink';
 
 type LinksType = {
     title: string,

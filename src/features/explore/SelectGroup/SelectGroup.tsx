@@ -1,8 +1,8 @@
 import { Dispatch, FunctionComponent, MutableRefObject, SetStateAction, useState } from 'react';
 import './SelectGroup.scss';
 import Select from 'react-select/base';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { setGenres, setSorting } from '../../../entities/explore/model/slice/exploreSlice';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { setGenres, setSorting } from 'entities/explore/model/slice/exploreSlice';
 
 interface SelectGroupProps {
     mediaType: 'tv' | 'movie';
@@ -61,7 +61,7 @@ const SelectGroup: FunctionComponent<SelectGroupProps> = ({ mediaType, filters, 
         }
         page.current = 1;
     };
-  
+
     return (
         <div className="filters">
             <Select

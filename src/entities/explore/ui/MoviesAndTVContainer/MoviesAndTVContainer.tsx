@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
-import PosterFallback from '../../../../shared/assets/images/no-poster.png';
+import PosterFallback from 'shared/assets/images/no-poster.png';
 import { CarouselCard } from '../../../CarouselCard';
 import cls from '../../../query/ui/QueryContent/QueryContent.module.scss';
-import { useAppSelector } from '../../../../app/providers/storeProviders/utils/hooks';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 import { IMovieResults, ITVResults } from '../../model/types/exploreType';
 
 interface MoviesAndTVContainerProps {

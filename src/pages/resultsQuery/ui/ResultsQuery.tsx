@@ -2,12 +2,12 @@ import { FunctionComponent, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import cls from './ResultsQuery.module.scss';
-import { fetchQueryResults } from '../../../entities/query/model/slice/querySlice';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import { QueryContent, TotalResults } from '../../../entities/query';
-import Loader from '../../../shared/ui/loader/Loader';
-import NotFoundResults from '../../../shared/ui/NotFoundResults/NotFoundResults';
+import { fetchQueryResults } from 'entities/query/model/slice/querySlice';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import { QueryContent, TotalResults } from 'entities/query';
+import Loader from 'shared/ui/loader/Loader';
+import NotFoundResults from 'shared/ui/NotFoundResults/NotFoundResults';
 
 const ResultsQuery: FunctionComponent = () => {
     const dispatch = useAppDispatch();

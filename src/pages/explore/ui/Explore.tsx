@@ -1,14 +1,14 @@
 import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
-import { fetchExplore } from '../../../entities/explore/model/slice/exploreSlice';
-import cls from './Explore.module.scss';
-import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import { ExploreHeader } from '../../../entities/explore';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import MoviesAndTVContainer from '../../../entities/explore/ui/MoviesAndTVContainer/MoviesAndTVContainer';
-import Loader from '../../../shared/ui/loader/Loader';
-import NotFoundResults from '../../../shared/ui/NotFoundResults/NotFoundResults';
+import cls from './Explore.module.scss';
+import { useAppDispatch, useAppSelector } from 'app/providers/storeProviders/utils/hooks';
+import { fetchExplore } from 'entities/explore/model/slice/exploreSlice';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
+import { ExploreHeader } from 'entities/explore';
+import MoviesAndTVContainer from 'entities/explore/ui/MoviesAndTVContainer/MoviesAndTVContainer';
+import Loader from 'shared/ui/loader/Loader';
+import NotFoundResults from 'shared/ui/NotFoundResults/NotFoundResults';
 
 const Explore: FunctionComponent = () => {
     const dispatch = useAppDispatch();

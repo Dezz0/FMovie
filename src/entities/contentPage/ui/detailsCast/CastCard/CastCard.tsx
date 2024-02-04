@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
 import cls from './CastCard.module.scss';
-import Img from '../../../../../shared/ui/Image/Img';
-import { ICastResults } from '../../../../../shared/types/typeOfResultRequest/typeOfResultRequest';
-import Avatar from '../../../../../shared/assets/images/avatar.png';
-import { useAppSelector } from '../../../../../app/providers/storeProviders/utils/hooks';
+import Img from 'shared/ui/Image/Img';
+import { ICastResults } from 'shared/types/typeOfResultRequest/typeOfResultRequest';
+import Avatar from 'shared/assets/images/avatar.png';
+import { useAppSelector } from 'app/providers/storeProviders/utils/hooks';
 
 interface CastCardProps {
     actor: ICastResults;
