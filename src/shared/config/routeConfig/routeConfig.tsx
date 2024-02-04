@@ -14,7 +14,7 @@ export enum AppRoutes {
 }
 
 export const RouterPath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: '/',
+    [AppRoutes.MAIN]: '/FMovie',
     [AppRoutes.RESULTS_QUERY]: 'search/:query',
     [AppRoutes.CONTENT_PAGE]: ':mediaType/:id',
     [AppRoutes.EXPLORE]: 'explore/:mediaType',

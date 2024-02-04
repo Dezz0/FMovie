@@ -57,7 +57,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
     return (
         <div className={`${mobileMenu ? cls.mobileView : cls.NavBar} ${cls[showNavBar]}`}>
             <ContentWrapper className="ContentWrapperPopUpSearchField">
-                <div className={cls.logo} onClick={() => navigate('/')}>
+                <div className={cls.logo} onClick={() => navigate('/FMovie')}>
                     <Logo/>
                     <span>FMovie</span>
                 </div>

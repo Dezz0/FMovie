@@ -10,7 +10,8 @@
 - axios
 - методология FSD
 
-**Ссылка на api [TMDB](https://developer.themoviedb.org/docs/getting-started)**
+**Ссылка на api [TMDB](https://developer.themoviedb.org/docs/getting-started)** \
+**Ссылка на проект [FMovie](https://Dezz0.github.io/FMovie)**
 
 ### Главная
 
