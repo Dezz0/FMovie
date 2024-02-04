@@ -1,3 +1,24 @@
 .ErrorPage {
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 25px;
+
+    .text {
+        color: var(--white);
+        font-size: 44px;
+        text-align: center;
+    }
+
+    .button {
+        cursor: pointer;
+        color: var(--white);
+        background: var(--gradient);
+        font-size: 20px;
+        padding: 15px 30px;
+        outline: none;
+        border-radius: 15px;
+    }
 }

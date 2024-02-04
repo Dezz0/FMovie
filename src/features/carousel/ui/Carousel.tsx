@@ -50,7 +50,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ results, isLoading, endpoi
                                 results?.map(item => {
                                     const posterUrl = item.poster_path ? url + item.poster_path : PosterFallback;
                                     return <CarouselCard
-                                        key={item.id}
+                                        key={item.id + item.poster_path}
                                         item={item}
                                         posterUrl={posterUrl}
                                         endpoint={endpoint}

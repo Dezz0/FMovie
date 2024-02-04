@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import ContentWrapper from 'shared/ui/contentWrapper/ContentWrapper';
 import cls from './ErrorPage.module.scss';
 
 const ErrorPage: FunctionComponent = () => {
@@ -7,10 +8,12 @@ const ErrorPage: FunctionComponent = () => {
         location.reload();
     };
     return (
-        <div className={cls.ErrorPage}>
-            <p>Error page</p>
-            <button onClick={reloadPage}>Reload page</button>
-        </div>
+        <ContentWrapper>
+            <div className={cls.ErrorPage}>
+                <p className={cls.text}>Oops! Something went wrong</p>
+                <button className={cls.button} onClick={reloadPage}>Reload page</button>
+            </div>
+        </ContentWrapper>
     );
 };
 
