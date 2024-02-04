@@ -1,10 +1,11 @@
 import { Dispatch, FunctionComponent, MutableRefObject, SetStateAction, useState } from 'react';
 import './SelectGroup.scss';
 import Select from 'react-select/base';
-import { useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
+import { setGenres, setSorting } from '../../../entities/explore/model/slice/exploreSlice';
 
 interface SelectGroupProps {
-    mediaType: string;
+    mediaType: 'tv' | 'movie';
     page: MutableRefObject<number>;
     filters: {
         sort_by: string,
@@ -27,18 +28,17 @@ const sortByData = [
 ];
 
 const SelectGroup: FunctionComponent<SelectGroupProps> = ({ mediaType, filters, setFilters, page }) => {
+    const dispatch = useAppDispatch();
     const { genresMovie, genresTV } = useAppSelector(state => state.config);
-    const [genre, setGenre] = useState(null);
-    const [sortBy, setSortBy] = useState(null);
+    const explore = useAppSelector(state => state.explore);
     const [showSortBy, setShowSortBy] = useState(false);
     const [showGenres, setShowGenres] = useState(false);
     const [handleTextSortBy, setHandleTextSortBy] = useState('');
     const [handleTextGenres, setHandleTextGenres] = useState('');
-    console.log(sortBy, 'sortBy');
-    console.log(genre, 'genre');
+
     const onChange = (selectedItems: any, action: any) => {
         if (action.name === 'sortBy') {
-            setSortBy(selectedItems);
+            dispatch(setSorting({ ...selectedItems, mediaType }));
             if (action.action !== 'clear') {
                 setFilters({ ...filters, sort_by: selectedItems.value });
             } else {
@@ -47,7 +47,7 @@ const SelectGroup: FunctionComponent<SelectGroupProps> = ({ mediaType, filters, 
         }
 
         if (action.name === 'genres') {
-            setGenre(selectedItems);
+            dispatch(setGenres({ selectedItems, mediaType }));
             if (action.action !== 'clear') {
                 let genreId = selectedItems.map((g: {
                     id: number,
@@ -61,7 +61,7 @@ const SelectGroup: FunctionComponent<SelectGroupProps> = ({ mediaType, filters, 
         }
         page.current = 1;
     };
-
+  
     return (
         <div className="filters">
             <Select
@@ -80,10 +80,10 @@ const SelectGroup: FunctionComponent<SelectGroupProps> = ({ mediaType, filters, 
                 placeholder="Select genres"
                 className="react-select-container genresDD"
                 classNamePrefix="react-select"
-                value={genre}/>
+                value={explore[mediaType].genres}/>
             <Select
                 name="sortBy"
-                value={sortBy}
+                value={!!explore[mediaType].sorting.value ? explore[mediaType].sorting : null}
                 options={sortByData}
                 onChange={onChange}
                 isClearable={true}

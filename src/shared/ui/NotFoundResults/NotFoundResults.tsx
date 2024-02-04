@@ -3,7 +3,11 @@ import cls from './NotFoundResults.module.scss';
 
 const NotFoundResults: FunctionComponent = () => {
 
-    return (<span className={cls.resultNotFound}>Sorry, Results not found!</span>);
+    return (
+        <span className={cls.NotFoundResults}>
+            Sorry, Results not found!
+        </span>
+    );
 };
 
 export default NotFoundResults;

@@ -13,21 +13,22 @@ interface CarouselCardProps {
     endpoint?: string,
     fullInfo?: boolean
     className?: string
+    mediaType?: 'tv' | 'movie'
 }
 
-const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, endpoint, fullInfo = true, className = '' }) => {
+const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, endpoint, fullInfo = true, className = '', mediaType }) => {
     const navigate = useNavigate();
 
     return (
         <div
             className={`CarouselCard ${className}`}
-            onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
+            onClick={() => navigate(`/${item.media_type || endpoint || mediaType}/${item.id}`)}
         >
             <div className="posterBlock">
                 <Img src={posterUrl}/>
                 {fullInfo && (<>
-                    <CircleRating rating={Number(item.vote_average.toFixed(1))}/>
-                    <Genres genresProps={item.genre_ids.slice(0, 2)}/>
+                    <CircleRating rating={Number(item.vote_average?.toFixed(1))}/>
+                    <Genres genresProps={item.genre_ids?.slice(0, 2)}/>
                 </>)}
             </div>
             <div className="descriptionCard">
@@ -35,7 +36,7 @@ const CarouselCard: FunctionComponent<CarouselCardProps> = ({ item, posterUrl, e
                     {item.title || item.name}
                 </span>
                 <span className="date">
-                    {dayjs(item.release_date).format(
+                    {dayjs(item.release_date || item.first_air_date).format(
                         'MMM D, YYYY',
                     )}
                 </span>

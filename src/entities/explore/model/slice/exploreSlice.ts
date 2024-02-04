@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { apiRequest } from '../../../../shared/api/api';
-import { exploreParamsType, ExplorePayloadResponse, IMoviesAndTV } from '../types/exploreType';
+import { exploreParamsType, ExplorePayloadResponse, IGenres, IMoviesAndTV, ISorting } from '../types/exploreType';
 
 type InitialStateType = {
     'movie': IMoviesAndTV,
@@ -17,6 +17,11 @@ const initialState: InitialStateType = {
         total_pages: 0,
         sort_by: '',
         with_genres: '',
+        genres: [],
+        sorting: {
+            label: '',
+            value: '',
+        },
     },
     'tv': {
         page: 1,
@@ -25,6 +30,11 @@ const initialState: InitialStateType = {
         total_pages: 0,
         sort_by: '',
         with_genres: '',
+        genres: [],
+        sorting: {
+            label: '',
+            value: '',
+        },
     },
     isLoading: false,
     isError: false,
@@ -46,15 +56,22 @@ const exploreSlice = createSlice({
     initialState,
     reducers: {
         setFilters(state, action: PayloadAction<{
-            mediaType: string | undefined,
+            mediaType: 'tv' | 'movie',
             sort_by: string
             with_genres: string
         }>) {
             const { sort_by, with_genres, mediaType } = action.payload;
-            if (mediaType === 'tv' || mediaType === 'movie') {
-                state[mediaType].sort_by = sort_by;
-                state[mediaType].with_genres = with_genres;
-            }
+            state[mediaType].sort_by = sort_by;
+            state[mediaType].with_genres = with_genres;
+        },
+        setGenres(state, action: PayloadAction<IGenres>) {
+            const { selectedItems, mediaType } = action.payload;
+            state[mediaType].genres = selectedItems;
+        },
+
+        setSorting(state, action: PayloadAction<ISorting>) {
+            const { label, value, mediaType } = action.payload;
+            state[mediaType].sorting = { value: value, label: label };
         },
     },
     extraReducers: builder => {
@@ -64,14 +81,13 @@ const exploreSlice = createSlice({
         });
         builder.addCase(fetchExplore.fulfilled, (state, action: PayloadAction<ExplorePayloadResponse>) => {
             state.isLoading = false;
-            const { mediaType, page, results, total_results, total_page } = action.payload;
-            if (mediaType === 'movie' || mediaType === 'tv') {
-                if (page === 1) {
-                    state[mediaType] = { ...state[mediaType], page: page, results: [...results], total_results: total_results, total_pages: total_page };
-                }
-                if (state[mediaType].page < page) {
-                    state[mediaType] = { ...state[mediaType], page: page, results: [...results] };
-                }
+            const { mediaType, page, results, total_results, total_pages } = action.payload;
+
+            if (page === 1) {
+                state[mediaType] = { ...state[mediaType], page: page, results: [...results], total_results: total_results, total_pages: total_pages };
+            }
+            if (state[mediaType].page < page) {
+                state[mediaType] = { ...state[mediaType], page: page, results: [...state[mediaType].results, ...results] };
             }
         });
         builder.addCase(fetchExplore.rejected, (state) => {
@@ -82,4 +98,4 @@ const exploreSlice = createSlice({
 });
 
 export default exploreSlice.reducer;
-export const { setFilters } = exploreSlice.actions;
+export const { setFilters, setGenres, setSorting } = exploreSlice.actions;

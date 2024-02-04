@@ -5,8 +5,9 @@ import cls from './ResultsQuery.module.scss';
 import { fetchQueryResults } from '../../../entities/query/model/slice/querySlice';
 import { useAppDispatch, useAppSelector } from '../../../app/providers/storeProviders/utils/hooks';
 import ContentWrapper from '../../../shared/ui/contentWrapper/ContentWrapper';
-import { NotFoundResults, QueryContent, TotalResults } from '../../../entities/query';
+import { QueryContent, TotalResults } from '../../../entities/query';
 import Loader from '../../../shared/ui/loader/Loader';
+import NotFoundResults from '../../../shared/ui/NotFoundResults/NotFoundResults';
 
 const ResultsQuery: FunctionComponent = () => {
     const dispatch = useAppDispatch();
@@ -34,7 +35,6 @@ const ResultsQuery: FunctionComponent = () => {
     if (!requests[query!] && isLoading) {
         return <Loader/>;
     }
-
     return (
         <div className={cls.ResultsQuery}>
             <ContentWrapper>

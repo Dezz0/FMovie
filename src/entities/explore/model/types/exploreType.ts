@@ -1,5 +1,5 @@
 export type exploreParamsType = {
-    mediaType?: string,
+    mediaType: 'tv' | 'movie',
     page: number
     filters: {
         sort_by: string,
@@ -48,13 +48,35 @@ export interface IMoviesAndTV {
     page: number
     sort_by: string,
     with_genres: string
+    genres: Array<{
+        id: number,
+        name: string
+    }>
+    sorting: {
+        label: string,
+        value: string
+    }
 }
 
 export interface ExplorePayloadResponse {
     pageNum: number;
-    mediaType: string;
+    mediaType: 'tv' | 'movie',
     page: number;
     results: Array<IMovieResults | ITVResults>;
-    total_page: number;
+    total_pages: number;
     total_results: number;
+}
+
+export interface IGenres {
+    selectedItems: Array<{
+        id: number,
+        name: string
+    }>,
+    mediaType: 'tv' | 'movie',
+}
+
+export interface ISorting {
+    label: string
+    mediaType: 'tv' | 'movie',
+    value: string
 }
